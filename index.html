@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="name" type="text">
+    <button onclick="getSound()">API 요청</button>
+    <script>
+        function getSound(){
+            // ` 를 이용하면 자바스크립트 변수를 넣을 수 있음
+            const name = document.getElementById('name').value
+            fetch(`http://localhost:3000/sound/${name}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.sound)
+                document.getElementById('sound').innerHTML = data.sound
+            });
+        }
+    </script>
+    
+</body>
+</html>
